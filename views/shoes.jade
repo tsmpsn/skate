@@ -11,16 +11,17 @@ body
         table
             thead
                 tr
-                    td='Name'
-                    td='Image'
-                    td='Price'
-                    td='Link'
-                    td='smthg'
+                    th='Name'
+                    th='Image'
+                    th='Price'
+                    th='Link'
+                    th='smthg'
             each s in shoeList
                 tr
                     td=s[2]
                     td
                         img(src=s[1])
                     td=s[3]
-                    td=s[4]
-                    td=s[5]
+                    td
+                        a(href=s[4]) 
+                            h1'View'
