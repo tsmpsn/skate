@@ -1,0 +1,26 @@
+doctype html
+html
+head
+title=skatestuffonly
+body
+    div.container
+        input#nameSearch(type='text' onkeyup="searchTable('nameSearch', 0)" placeholder='Search by names' title='Type in a name')
+        input#brandSearch(type='text' onkeyup="searchTable('brandSearch', 1)" placeholder='Search by brand' title='Type in a brand')
+        //input#shopSearch(type='text' onkeyup="searchTable('shopSearch', 4)" placeholder='Search by shop' title='Type in a skateshop')
+    
+        table
+            thead
+                tr
+                    td='Image'
+                    td='Name'
+                    td='Price'
+                    td='Link'
+                    td='smthg'
+            each s in shoeList
+                tr
+                    td=s[2]
+                    td
+                        img(src=s[1])
+                    td=s[3]
+                    td=s[4]
+                    td=s[5]
