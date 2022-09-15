@@ -1,70 +1,12 @@
 const express = require("express");
 const {google} = require("googleapis");
 const moment = require("moment");
-// var sortRouter = require('./routes/sort');
 
 const app = express();
 
 // Can remove if I use ES6
 app.set("view engine","jade");
-
-function createTable(tableData) {
-    var table = document.createElement('table');
-    var tableBody = document.createElement('tbody');
   
-    tableData.forEach(function(rowData) {
-      var row = document.createElement('tr');
-  
-      rowData.forEach(function(cellData) {
-        var cell = document.createElement('td');
-        cell.appendChild(document.createTextNode(cellData));
-        row.appendChild(cell);
-      });
-  
-      tableBody.appendChild(row);
-    });
-  
-    table.appendChild(tableBody);
-    document.body.appendChild(table);
-  }
-
-  function createTable2(tableData) {
-    let moment = require('moment');
-
-    let htmlTableRows = ``;
-    let itr = 0;
-
-    // // Create header
-    // htmlTableRows += `<thead>
-    //       <th>Image</th>
-    //       <th>Name</th>
-    //       <th>h3</th>
-    //       <th>h4</th>
-    //       <th>${moment(row.statusDate).format("YYYY-MM-DD HH:mm:ss")}</th>
-    //   </thead>`;
-
-    // Iterate of the rows in the data, use an ES6 "arrow function" to operate on each one
-    tableData.forEach((row) => {
-        // Use ES6 string template to create HTML table rows
-        if (itr !== 0) {
-            htmlTableRows += `<tr>
-            <td>${row["0"]}</td>
-            <td><img src="${row["1"]}" alt="item img"/></td>
-            <td>${row["2"]}</td>
-            <td>${row["3"]}</td>
-            <td>${moment(row.statusDate).format("YYYY-MM-DD HH:mm:ss")}</td>
-        </tr>`;
-        }
-        itr++;
-    });
-
-    // HTML for a table
-    let htmlTable = `<table style="width:100%">${htmlTableRows}</table>`;
-
-    return htmlTable;
-
-  }
-
 app.get("/", async (req, res) => {
 
     const auth = new google.auth.GoogleAuth({
