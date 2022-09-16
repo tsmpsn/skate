@@ -1,10 +1,11 @@
 const express = require("express");
 const {google} = require("googleapis");
-const moment = require("moment");
-
+const path = require('path');
+const ejs = require('ejs');
 const app = express();
 
-app.set("view engine","jade");
+app.set("view engine","ejs");
+app.use(express.static(path.join(__dirname, 'public')));
   
 app.get("/", async (req, res) => {
     const auth = new google.auth.GoogleAuth({
@@ -33,9 +34,8 @@ app.get("/", async (req, res) => {
     
     // Remove header row
     getRows.data.values.shift();
-    
-    // Run in Jade
-    res.render('shoes', { shoeList: getRows.data.values});
+    let dataArray = getRows.data.values;
+    res.render('shoes', itemList = dataArray);
 
     // Show JSON
     // res.send(getRows.data.values);
