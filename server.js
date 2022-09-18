@@ -34,9 +34,12 @@ async function loadData() {
     return getRows.data.values;
 }
 
+let nsIter = 0;
 function nameSort(dataArray) {
-    dataArray.forEach(function(i) {
-    });
+    nsIter++;
+    if (nsIter % 2 == 0)
+        return dataArray.sort((a, b) => a[1].localeCompare(b[1]));
+    return dataArray.sort((a, b) => a[1].localeCompare(b[1])).reverse();
 }
   
 app.get("/", async (req, res) => {
@@ -44,13 +47,19 @@ app.get("/", async (req, res) => {
     res.render('shoes', itemList = dataArray);
 });
 
+app.get("/nameSort", async (req, res) => {
+    let dataArray = await loadData();
+    let sortedArray = nameSort(dataArray);
+    res.render('shoes', itemList = sortedArray);
+});
+
 app.get("/search/:type", async (req, res) => {
     let dataArray = await loadData();
     let queryType = req.params.type;
 
-    if (queryType === 'name') {
-        sortName(dataArray);
-    }
+    // if (queryType === 'name') {
+    //     (dataArray);
+    // }
     res.render('shoes', itemList = dataArray);
 });
 
