@@ -11,15 +11,13 @@
       <div class="jumbotron">
         <h1>skateboarding-shop</h1>
         <h6>protecting skate culture</h6>
-        <table class="sortable">
+        <table id="mainTable">
           <thead>
-            <tr>
               <th>Nr</th>
-              <th><a href="/nameSort">Name</a></th>
+              <th><a onclick="sortTable(1)">Name</a></th>
               <th>Image</th>
-              <th>Price</th>
+              <th><a onclick="sortTable(3)">Price</a></th>
               <th>Link</th>
-            </tr>
           </thead>
           <% itemList.forEach(function(item) { %>
             <tr>
@@ -37,6 +35,9 @@
     <div class="col-sm-4">
       <div class="well">
         <h3>Filter</h3>
+        <input type="text" id="nameInput" onkeyup="nameSearch()" placeholder="Search by name.." title="Type in a name">
+        <input type="text" id="maxPriceInput" onkeyup="maxPrice()" placeholder="Maximum price.." title="Enter a price">
+
       </div>
     </div>
   </div>
