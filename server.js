@@ -26,7 +26,7 @@ async function loadData() {
     const getRows = await googleSheets.spreadsheets.values.get({
         auth,
         spreadsheetId,
-        range: "master!A:E"
+        range: "master!A:F"
     });
 
     // Remove header row

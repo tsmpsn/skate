@@ -1,4 +1,6 @@
 ﻿let switching = true;
+
+// n == column number
 function sortTable(n) {
     var table, rows, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("mainTable");

@@ -18,6 +18,7 @@
               <th>Image</th>
               <th><a onclick="sortTable(3)">Price</a></th>
               <th>Link</th>
+              <th><a onclick="sortTable(5)">Brand</a></th>
           </thead>
           <% itemList.forEach(function(item) { %>
             <tr>
@@ -26,6 +27,7 @@
               <td><img src="<%= item[2] %>" alt="itmimg"/></td>
               <td><%= item[3] %></td>
               <td><a href="<%= item[4] %>">View</a></td>
+              <td><%= item[5] %></td>
             </tr>
           <% }); %>
         </table>
